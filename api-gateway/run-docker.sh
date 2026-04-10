@@ -14,9 +14,9 @@ docker run -d -p 8080:8080 --name api-gateway \
   --network pfms-network \
   --restart unless-stopped \
   --add-host=host.docker.internal:host-gateway \
-  -e EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE="host.docker.internal" \
+  -e EUREKA_CLIENT_SERVICE_URL_DEFAULTZONE="http://discovery-server:8761/eureka"
   -e SPRING_PROFILES_ACTIVE=docker \
-  -e SPRING_DATASOURCE_URL='jdbc:mysql://host.docker.internal:3307/apigwdb?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false' \
+  -e SPRING_DATASOURCE_URL='jdbc:mysql://apigwdb:3306/apigwdb?serverTimezone=UTC&allowPublicKeyRetrieval=true&useSSL=false'
   -e SPRING_DATASOURCE_USERNAME='root' \
   -e SPRING_DATASOURCE_PASSWORD='secret' \
   delose/api-gateway:latest
